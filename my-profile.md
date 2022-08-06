@@ -1,6 +1,6 @@
 # Show my profile
 
-_we look what's at webId * a brief look at what RDF is * fetch my data with inrupt library * fetch my photo * it's annoying, isn't it?_
+_we look what's at webId * triples, triples, triples * fetch my data with inrupt library * fetch my photo * it's annoying, isn't it?_
 
 _how we fetch user's profile data - photo, name, about_
 
@@ -12,9 +12,9 @@ So we'll do just that. After app gets initialized (with `handleIncomingRedirect`
 
 This would be a prime time to talk a little bit about Linked Data, or RDF - Resource Description Framework. If you know this, skip the next section, and jump directly [here].
 
-## Linked Data, RDF
+## Triples, Triples, Triples
 
-Resource Description Framework. Sounds scary, doesn't it? Who comes up with these names? You want to run away and hide and cry.
+RDF, short for Resource Description Framework. Sounds scary, doesn't it? Who comes up with these names? You want to run away and hide and cry.
 
 But it's pretty simple. It's basically all just short sentences about somebody or something. Like a story, but with limited words.
 
