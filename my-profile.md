@@ -75,7 +75,7 @@ But i had a problem that my photo wasn't public. So I needed to fetch it while a
 
 Using the inrupt library is a bit annoying, isn't it? In my ideal world, I'd like to do things like
 
-(visualize query - missing fields in graph)
+<img src="assets/graph_query.png" alt="graph query visualized" width="500" />
 
 This is possible with SPARQL. But Solid and SPARQL are not exactly friends. We'll get to that. If you're impatient, jump [here (TODO)]().
 
