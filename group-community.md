@@ -106,6 +106,28 @@ Great! So the group should look like
 (remember how to read this? [Triples, triples, triples...](my-profile.md#triples-triples-triples))
 
 
+### Testing the group out
+
+Now, let's see if this actually works and if we can use it.
+
+We want to:
+
+1. Make a public group
+    1. See if we can authorize the group members to access a resource
+1. Make the group private - self-referencing (The group can be viewed by members of itself)
+    1. See if we can see other members
+    1. See if we can authorize the group members to access a resource
+
+Because ideally, the group members are visible only to each other, and can share their hosting offers only with each other.
+
+And we're curious how different Solid Pod implementations handle this - NSS, CSS, ESS
+
+We put a [detailed report into a separate document](group-test.md).
+
+
+
+
+
 _to write: test if group works, test if it can be private and members can still fetch other members, test if data can be shared with the private group only (+ test different pod implementations), make a private group, allow anybody to append, describe limitations we start with (public offer, append only, no leaving, no search by location), implementing finding groups, searching groups, showing people on a map_
 
 
