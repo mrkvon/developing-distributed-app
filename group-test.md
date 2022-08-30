@@ -26,9 +26,13 @@ And we're curious how different Solid Pod implementations handle this - NSS, CSS
 - https://grouptest1.solidcommunity.net/profile/card#me
 - https://grouptest2.solidcommunity.net/profile/card#me
 
+One needs to add the triple `:me solid:oidcIssuer <https://solidcommunity.net>`, if it wasn't added automatically, to assure compatibility with CSS
+
 #### solidweb.org (NSS)
 - https://grouptest1.solidweb.org/profile/card#me
 - https://grouptest2.solidweb.org/profile/card#me
+
+One needs to add the triple `:me solid:oidcIssuer <https://solidweb.org>`, if it wasn't added automatically, to assure compatibility with CSS
 
 #### solidweb.me (CSS)
 - https://solidweb.me/grouptest1/profile/card#me
@@ -133,11 +137,7 @@ This is probably identical issue to our [first side test](https://github.com/mrk
 
 #### [person on solidcommunity.net](https://grouptest2.solidcommunity.net/profile/card#me) - [community on solidweb.me](https://solidweb.me/grouptest1/group-test/private-group.ttl#group)
 
-Result: Request `GET https://solidweb.me/grouptest1/group-test/private-group.ttl` **fails** with status `401 Unauthorized` and body `{"name":"UnauthorizedHttpError","message":"","statusCode":401,"errorCode":"H401"}`
-
-This is probably identical issue to our [second side test](https://github.com/mrkvon/developing-distributed-app/blob/main/group-test.md#person-on-solidwebme-sharing-file-with-person-on-solidcommunity).
-
-So we give up on authentication compatibility between NSS and CSS.
+Result: Request fails with `403 Forbidden`.
 
 #### [person on solidweb.me](https://solidweb.me/grouptest2/profile/card#me) - [community on solidweb.me](https://solidweb.me/grouptest1/group-test/private-group.ttl#group)
 
@@ -153,11 +153,11 @@ Result: YES!
 
 #### [person on solidweb.org](https://grouptest1.solidweb.org/profile/card#me) - [group on solidcommunity.net](https://grouptest1.solidcommunity.net/group-test/public-group.ttl#group) - [document on solidweb.me](https://solidweb.me/grouptest1/group-test/document-public-group-solidcommunity.ttl)
 
-Result: Request `GET https://solidweb.me/grouptest1/group-test/document-public-group-solidcommunity.ttl` **fails** with `401 Unauthorized`
+Result: YES!
 
-#### person on solidcommunity.net - group on solidweb.me - document on solidweb.me
+#### [person on solidcommunity.net](https://grouptest1.solidcommunity.net/profile/card#me) - [group on solidweb.me](https://solidweb.me/grouptest1/group-test/public-group.ttl#group) - [document on solidweb.me](https://solidweb.me/grouptest2/group-test/document-public-group-solidweb-me.ttl)
 
-Don't even try... NSS person can't authenticate to CSS (See [side tests](https://github.com/mrkvon/developing-distributed-app/blob/main/group-test.md#person-on-solidwebme-sharing-file-with-person-on-solidcommunity))
+Result: YES!
 
 #### [person on solidcommunity.net](https://grouptest2.solidcommunity.net/profile/card#me) - [group on solidweb.me](https://solidweb.me/grouptest1/group-test/public-group.ttl#group) - [document on solidcommunity.net](https://grouptest1.solidcommunity.net/group-test/document-public-group-solidweb-me.ttl)
 
@@ -219,9 +219,9 @@ Issue: https://github.com/nodeSolidServer/node-solid-server/issues/1698
 
 #### [Person on solidweb.me](https://solidweb.me/grouptest1/profile/card#me) sharing [file](https://solidweb.me/grouptest1/group-test/document-person-solidcommunity.ttl) with [person on solidcommunity](https://grouptest1.solidcommunity.net/profile/card#me)
 
-Result: **fails** with `401 Unauthorized`
+Result: YES!
 
-Issue: https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1441
+Issue: https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1441 (resolved by adding missing `solid:oidcIssuer` to profile documents on NSS)
 
 ## Conclusion
 
@@ -229,14 +229,14 @@ We tested capabilities of authorization with Solid groups with NSS, CSS and ESS 
 
 We found out multiple things about groups and authentication:
 
-- in general, NSS and CSS authentication is currently incompatible
+- in general, authentication with CSS account to NSS is buggy (on server side of NSS). The other way works, if correct `solid:oidcIssuer` is present in the NSS account's profile document.
 - giving document access to members of public groups generally works (with exception of the above incompatibility)
-- members of private groups can see their group only if both members and group are on NSS; every other combination fails; CSS fails on this task completely
+- members of private groups can see their group only if the group is on NSS. We couldn't test CSS reading NSS group, because of the above incompatibility
 - giving document access to members of private groups fails everywhere
 
 We also opened github issues based on these tests:
 
 - https://github.com/nodeSolidServer/node-solid-server/issues/1698
-- https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1441
+- ~~https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1441~~ (got resolved by adding `solid:oidcIssuer`)
 - https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1442
 - https://github.com/nodeSolidServer/node-solid-server/issues/1699
