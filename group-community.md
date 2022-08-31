@@ -71,14 +71,14 @@ These are all valid options. For starters we went for the middle option - making
 
 ## How to make a group
 
-We hope to could create a group such that
+We hope to create a group such that
 
 - Only group members can fetch the list of other members
 - Some groups will be accepting everybody, others will be private - invitation only, or you apply for membership and somebody has to accept you
 - I can decide to only share my offers with the members of the group, not with the whole world
 - It's possible to leave the group
 
-We've seen in [Node Solid Server](https://github.com/nodeSolidServer/node-solid-server) [e.g. solidcommunity.net](https://solidcommunity.net/) that we can give permissions to a group, so we are hopeful
+We've seen in some Solid Server user interfaces, that we can give permissions to a group, so we are hopeful
 
 ![Add Group](assets/nss_add_group.png)
 
@@ -123,6 +123,53 @@ Because ideally, the group members are visible only to each other, and can share
 And we're curious how different Solid Pod implementations handle this - NSS, CSS, ESS
 
 We put a [detailed report into a separate document](group-test.md).
+
+#### What did we learn?
+
+Some results of this testing are hopeful, some a bit discouraging.
+
+We've found that groups, as a concept, work. We've also encountered some [bugs](https://github.com/nodeSolidServer/node-solid-server/issues/1698), which can be fixed.
+
+But unfortunately, private groups [probably don't work according to spec](https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1442#issuecomment-1229842295). I've [pursued this](https://forum.solidproject.org/t/can-i-use-a-non-public-group-to-define-access-to-my-resources/4841) [question further](https://gitter.im/solid/specification?at=630cef82443b7927a7eaaa83), but it's disappointing.
+
+Basically, at this point, the options are two:
+
+1. Everybody in the internet can see the list of hospitality exchange members
+2. Group is private, but the people's hospex data are public. ([this doesn't work if the group is hosted on CSS](https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1442))
+
+We chose the second option to start. But it's a difficult choice, two suboptimal options...
+
+### Finally, making it
+
+We made the following data design for a group:
+
+![hospex data model](https://raw.githubusercontent.com/OpenHospitalityNetwork/ohn-solid/main/docs/assets/data-model.jpg)
+
+And we added 2 new words to our hospex vocabulary: [memberOf](http://w3id.org/hospex/ns#memberOf), and [Community](http://w3id.org/hospex/ns#Community).
+
+Let's make a public document with community name and description, and a private document with community members.
+
+The public document:
+
+```ttl
+@prefix : <#>.
+@prefix sioc: <http://rdfs.org/sioc/ns#>.
+@prefix mem: <members#>.
+
+:us
+    a sioc:Community;
+    sioc:about
+    "Sleepy Bike is a hospitality exchange community for cyclists"@en;
+    sioc:has_usergroup mem:group;
+    sioc:name "Ospal\u00e9 kolo"@cs, "Sleepy Bike"@en.
+```
+
+The private document:
+
+```ttl
+
+```
+
 
 
 
