@@ -149,7 +149,9 @@ And we added 2 new words to our hospex vocabulary: [memberOf](http://w3id.org/ho
 
 Let's make a public document with community name and description, and a private document with community members.
 
-The public document:
+#### The public part
+
+Make [this document](https://mrkvon.inrupt.net/hospex/sleepy-bike/community#us):
 
 ```ttl
 @prefix : <#>.
@@ -164,23 +166,98 @@ The public document:
     sioc:name "Ospal\u00e9 kolo"@cs, "Sleepy Bike"@en.
 ```
 
-The private document:
+and make it **public** with the following [.acl](https://mrkvon.inrupt.net/hospex/sleepy-bike/community.acl)
 
 ```ttl
+@prefix : <#>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix sle: <./>.
+@prefix c: </profile/card#>.
 
+:ControlReadWrite
+    a acl:Authorization;
+    acl:accessTo sle:community;
+    acl:agent c:me;
+    acl:mode acl:Control, acl:Read, acl:Write.
+:Read
+    a acl:Authorization;
+    acl:accessTo sle:community;
+    acl:agentClass foaf:Agent;
+    acl:mode acl:Read.
 ```
 
+#### The private part
 
+Make [this document](https://mrkvon.inrupt.net/hospex/sleepy-bike/members#group):
 
+```ttl
+@prefix : <#>.
+@prefix sioc: <http://rdfs.org/sioc/ns#>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
+@prefix p1: <https://person1.solidweb.org/profile/card#>.
+@prefix p2: <https://person2.solidcommunity.net/profile/card#>.
+@prefix p3: <https://person3.solidcommunity.net/profile/card#>.
+@prefix p4: <https://solidweb.me/person4/profile/card#>.
+@prefix p5: <https://example.com/profile/card#>.
 
+:group
+    a sioc:UserGroup, vcard:Group;
+    vcard:hasMember
+        p1:me, p2:me, p3:me, p4:me, p5:me.
+```
 
+And make it visible to the group members.
+Also, allow new people to append their webId to the document. This will allow them to join the group instantly.
+The [.acl](https://mrkvon.inrupt.net/hospex/sleepy-bike/members.acl) with that setting will look as follows:
 
-_to write: test if group works, test if it can be private and members can still fetch other members, test if data can be shared with the private group only (+ test different pod implementations), make a private group, allow anybody to append, describe limitations we start with (public offer, append only, no leaving, no search by location), implementing finding groups, searching groups, showing people on a map_
+```ttl
+@prefix : <#>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix sle: <./>.
+@prefix c: </profile/card#>.
+@prefix mem: <members#>.
 
+:Append
+    a acl:Authorization;
+    acl:accessTo sle:members;
+    acl:agentClass acl:AuthenticatedAgent;
+    acl:mode acl:Append.
+:ControlReadWrite
+    a acl:Authorization;
+    acl:accessTo sle:members;
+    acl:agent c:me;
+    acl:mode acl:Control, acl:Read, acl:Write.
+:Read
+    a acl:Authorization;
+    acl:accessTo sle:members;
+    acl:agentGroup mem:group;
+    acl:mode acl:Read.
+```
 
+#### Issues
 
+Note the following:
 
+- The owner of the above list is a private person (for historical testing reasons). This is not acceptable for a hospex organization. Such lists should be organization-owned.
+- With this setup, anybody can join. In fact, anybody can add anybody else. Or add any data they please. This could make the list messy when malevolent folks discover it.
 
+### Limits
 
+And so we start with some important limitations:
 
+- Anybody can join, but nobody can leave.
+- There is no search by location in this group. If anybody wants to find what offers are available in a specific area, they have to download offers of everybody first! Not scalable at all.
 
+### Looking forward
+
+There are other ways to manage groups. This one is just for starters.
+
+- A group can exist, which you can request to join, and somebody will add you manually. So the group data won't get ruined.
+- A group can live in a dedicated place, outside the Solid Pod (which is too limited!), but following the protocols. With such a group, we could make a search by location possible, we could validate join requests automatically, and we could make leaving possible, too. I believe this is the way to go next.
+
+Unfortunately the issue that an offer has to be public, or the group has to be public, stays, unresolved.
+
+Next, we'll put all these components together, and allow people to join groups and show offers on the map.
+
+[Next: Putting it all together](all-together.md)
