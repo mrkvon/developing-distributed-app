@@ -12,7 +12,7 @@ But its promise is very interesting: For user: own your data. For developer: mak
 
 I'll make a knowledge assumption throughout. I won't explain what i don't feel like explaining. But i'll try to provide links as much as possible.
 
-The technology i knew before i started: Typescript, React, Solid, RDF, Express.js, and i won't explain this. In other cases i'll try to describe my learning journey.
+The technology i knew before i started: [Typescript](https://www.typescriptlang.org/), [React](https://reactjs.org/), [Solid](https://solidproject.org/), [RDF](https://www.w3.org/TR/rdf11-concepts/#data-model), [Express.js](https://expressjs.com/), and i won't explain this. In other cases i'll try to describe my learning journey.
 
 ## My agenda
 
@@ -22,7 +22,7 @@ I've spent a significant amount of time developing an app for collaborating in t
 
 ...
 
-I think Solid is an interesting idea. It suffers from being young and toothless. I haven't seen a proper social network built with Solid. Most apps seem to be just apps for developers. Assemblée Virtuelle with their ActivityPods have built interesting stuff, but it's not backwards compatible with Solid Pods.
+I think [Solid](https://solidproject.org/) is an interesting idea. But it suffers from being young and toothless. I haven't seen a proper social network built with Solid. Most apps seem to be just apps for developers. [Assemblée Virtuelle](https://www.virtual-assembly.org/) with their [ActivityPods](https://github.com/assemblee-virtuelle/activitypods) have [built]() [interesting]() [stuff](), but it's [not backwards compatible with Solid Pods]().
 
 I don't care for the inception ideas. I don't care for authority in Solid. I don't care for your new Specification. I want it to work.
 
