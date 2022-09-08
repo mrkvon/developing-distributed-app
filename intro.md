@@ -26,9 +26,6 @@ I think [Solid](https://solidproject.org/) is an interesting idea. But it suffer
 
 I don't care for the inception ideas. I don't care for authority in Solid. I don't care for your new Specification. I want it to work.
 
-[comment]: <> (I don't care for your new Specification)
-[comment]: <> (it's unclear to me who is "your" here. Maybe adding a link under "Specialization" will help, or changing "your" to somthing more specific?)
-
 For me, Solid is:
 
 1. an identity provider
@@ -37,11 +34,6 @@ For me, Solid is:
 As I said, i want to develop great real-social applications. Applications that connect people in reality.
 
 One well explored, and popular use case is Hospitality Exchange. It's pretty clear what the system should do.
-
-[comment]: <> (would be great if you mentioned somewhere here, here-here or elswhere on this page, how your collaboration with me or/and OHN started, what OHN is about and how it fits together with Your agenda. Maybe also a few words about sleepy.bike, who is it for and where it comes from? I'll be happy to discuss or draft parts of this if it was helpful.)
-
-[comment]: <> (I would describe OHN as an effort to design and build next generation hospitality exchange platform. One that would be federated (decentralized and interconnected\) in order to address issues and the long-term consequances many hospex communities have faced over the years of existance and which we believe are related to centralized infrastructure they've been built on.
-Or something along these lines.)
 
 So, let's focus on Hospitality Exchange for now.
 
@@ -54,12 +46,7 @@ In the simplest case:
 0. Sign in
 0. Write a little bit about yourself
 0. See a map of people who would like to host fellow travellers
-
-[comment]: <> (I like also a phrasing "people who invite fellow travellers to stay at theirs home/place". For me "people who offer to host sb" seems somehow very transactional, like the verb "to offer" implided that ones gets something in return. And I know usually they do, but I feel like it's better not to expect that.
-Maybe it's that the word "offer" has sales connection to me, where things are exchanged for money in a trasactional way)
 0. Open a profile of, and read about a few potential hosts, what they write about themselves and what other travellers wrote about staying with them, ..., get impression that you'll have good time together and maybe that you'd be reasonably safe with them
-
-[comment]: <> (personally I don't consider safety as something to think actively about, I follow my intuition and unless something awakens my inner sense of danger-detection I just go for it. My default is to trust people I'd say. I am writing it because I wouldn't mention safety-verification here, but I don't know how others have. Just to consider removing it.)
 0. Contact the potential hosts
 0. Wait for their reply
 0. When they reply, get a notification
@@ -80,9 +67,6 @@ Now, you have a home, you want to host travellers in your home:
 0. They confirm
 0. Enjoy the new real world connection, enjoy their stay
 0. After their stay, write a reference for them, and establish a friendship connection
-
-[comment]: <> (just as a side note: referrences are not a mandotory component, in WarmShowers they were hardly used, other platform may have different trust systems for example based on existing connections or profiles in other social networks. 
-In Trustroots 'references' are called 'experiences' which I also personally prefer as 'references' seem to me a bit formal and like it was Linked-in or similar network. I belive the phrase 'references' comes from CouchSurfing but I never used it so idk)
 
 ---
 

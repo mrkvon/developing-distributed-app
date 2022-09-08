@@ -59,14 +59,6 @@ Improvement #2.1: Make the group members searchable by location, creating a geo 
   - a group could be replicated, and an index could be distributed over a few nodes, with some redundancy.
 - If we don't make _Improvement #2.1_, we have to fetch all members' offers in order to find hosts in the area we travel to
 
-
-[comment]: <> (### 3. Make a distributed way to discover each other &#40;Distributed Hash Tables&#41;)
-
-[comment]: <> (I don't think it would work actually. 
-It is possible to have an index distributed over a few nodes, that could be queried by location. 
-It is also possible to have a key-value store distributed over a few nodes, implemented as a distributed hash table, it would be queried by keys, not sure what they might be.
-I suggest removing this point alltogether. )
-
 ### (both solutions can coexist next to each other)
 
 ---
@@ -143,10 +135,6 @@ Basically, at this point, the options are two:
 
 1. Everybody in the internet can see the list of hospitality exchange members
 2. Group is private, but the people's hospex data are public. ([this doesn't work if the group is hosted on CSS](https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1442))
-
-[comment]: <> (What if we had a functional webId for each hospex community, and we created a public Solid Group that included them and authorized only members of this group to see people's hospex data? Each community would have a separate app/webpage, with their own webId. Only app would be authorized to access hospex data of members of the community it serves. The members directly or other apps/communities would not be authorized to read that data.
-Trust between communities could be established by granting or revoking access to resources of one community for the webId corresponding to the other community
-Only the apps could write to hospex.ttl files and they could enforce and validate expected file format for the offers that belong to them, a format that would be specific to them and they would have freedom to change and maintain it)
 
 We chose the second option to start. But it's a difficult choice, two suboptimal options...
 

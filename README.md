@@ -2,12 +2,9 @@
 
 In a series of articles we document how we build a distributed hospitality exchange over [Solid](https://solidproject.org).
 
-[comment]: <> (Who are we? Would be nice to write that it was you together with OHN project/team or you as part of it)
-
 [Start here](intro.md)...
 
 ---
-[comment]: <> (I enjoyed the mystery of unknowing "what happened next" but I believe many people may prefer to know what to expect before starting to read, so you may consider to add an overview here)
 ... or jump over directly to one of the chapters:
 
 1. [Developing a distributed app with Solid](intro.md) \
