@@ -20,19 +20,22 @@ I want to make apps that connect people in the real world. To be together, colla
 
 I've spent a significant amount of time developing an app for collaborating in the past. But it didn't have users. So ... meh ... well ...
 
-...
+---
 
-I think [Solid](https://solidproject.org/) is an interesting idea. But it suffers from being young and toothless. I haven't seen a proper social network built with Solid. Most apps seem to be just apps for developers. [Assemblée Virtuelle](https://www.virtual-assembly.org/) with their [ActivityPods](https://github.com/assemblee-virtuelle/activitypods) have [built]() [interesting]() [stuff](), but it's [not backwards compatible with Solid Pods]().
+I think [Solid](https://solidproject.org/) is an interesting idea. But it suffers from being young and toothless. I haven't seen a proper social network built with Solid. Most apps seem to be just apps for developers. [Assemblée Virtuelle](https://www.virtual-assembly.org/) with their [ActivityPods](https://github.com/assemblee-virtuelle/activitypods) have [built](https://lescheminsdelatransition.org/) [interesting](https://www.virtual-assembly.org/semapps-2/) [stuff](https://www.virtual-assembly.org/siti-2/), but it's [not backwards compatible with Solid Pods](https://forum.solidproject.org/t/activitypods-adding-intelligence-to-solid-pods-with-activitypub/4962/12).
 
 I don't care for the inception ideas. I don't care for authority in Solid. I don't care for your new Specification. I want it to work.
 
-For me, Solid is: 1. an identity provider 2. a database that apps can connect to, with detailed permissions that owner(s) can specify
+For me, Solid is:
 
-As I said, i want to develop great real social applications. Applications that connect people in reality.
+1. an identity provider
+2. a distributed database that apps can connect to, and owners of data can specify detailed permissions for their data - who they want to share their data with
+
+As I said, i want to develop great real-social applications. Applications that connect people in reality.
 
 One well explored, and popular use case is Hospitality Exchange. It's pretty clear what the system should do.
 
-so.
+So, let's focus on Hospitality Exchange for now.
 
 ## What is it supposed to do?
 
@@ -48,6 +51,7 @@ In the simplest case:
 0. Wait for their reply
 0. When they reply, receive a notification
 0. They can host you!
+0. Confirm
 0. Enjoy the new real world connection, enjoy the stay
 0. After the stay, write a reference for them, and establish a friendship connection
 
@@ -60,6 +64,7 @@ Now, you have a home, you want to host travellers in your home:
 0. Somebody wrote! You received a notification. 
 0. Read a message from them, read about them, check their references ... get intuition that you'd be reasonably safe with them in your home
 0. Invite them
+0. They confirm
 0. Enjoy the new real world connection, enjoy their stay
 0. After their stay, write a reference for them, and establish a friendship connection
 
