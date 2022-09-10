@@ -131,9 +131,7 @@ Result: YES!
 
 #### [person on solidweb.me](https://solidweb.me/grouptest1/profile/card#me) - [community on solidcommunity.net](https://grouptest1.solidcommunity.net/group-test/private-group.ttl#group)
 
-Result: Request `GET https://grouptest1.solidcommunity.net/group-test/private-group.ttl` **fails** with status `500 Internal Server Error` and body `normalizedAlgorithm.importKey is not a function`
-
-This is probably identical issue to our [first side test](https://github.com/mrkvon/developing-distributed-app/blob/main/group-test.md#person-on-solidcommunity-sharing-file-with-person-on-solidwebme) which found out that authenticating to NSS with CSS fails in simpler cases, too.
+Result: YES!
 
 #### [person on solidcommunity.net](https://grouptest2.solidcommunity.net/profile/card#me) - [community on solidweb.me](https://solidweb.me/grouptest1/group-test/private-group.ttl#group)
 
@@ -167,9 +165,9 @@ Result: YES!
 
 Result: YES!
 
-#### person on solidweb.me - group on solidweb.me - document on solidcommunity.net
+#### [person on solidweb.me](https://solidweb.me/grouptest2/profile/card#me) - [group on solidweb.me](https://solidweb.me/grouptest1/group-test/public-group.ttl#group) - [document on solidcommunity.net](https://grouptest1.solidcommunity.net/group-test/document-public-group-solidweb-me.ttl)
 
-Don't even try... CSS person can't authenticate to NSS (See [side tests](https://github.com/mrkvon/developing-distributed-app/blob/main/group-test.md#person-on-solidcommunity-sharing-file-with-person-on-solidwebme))
+Result: YES!
 
 #### [person on solidweb.me](https://solidweb.me/grouptest1/profile/card#me) - [group on solidweb.me](https://solidweb.me/grouptest1/group-test/public-group.ttl#group) - [document on solidweb.me](https://solidweb.me/grouptest2/group-test/document-public-group-solidweb-me.ttl)
 
@@ -213,9 +211,9 @@ Issue: https://github.com/nodeSolidServer/node-solid-server/issues/1699
 
 #### [Person on solidcommunity](https://grouptest1.solidcommunity.net/profile/card#me) sharing [file](https://grouptest1.solidcommunity.net/group-test/document-person-solidweb-me.ttl) with [person on solidweb.me](https://solidweb.me/grouptest1/profile/card#me)
 
-Result: **fails** with `500 Internal Server Error` and body `normalizedAlgorithm.importKey is not a function`
+Result: YES!
 
-Issue: https://github.com/nodeSolidServer/node-solid-server/issues/1698
+Issue: https://github.com/nodeSolidServer/node-solid-server/issues/1698 (resolved by https://github.com/nodeSolidServer/jose/pull/19)
 
 #### [Person on solidweb.me](https://solidweb.me/grouptest1/profile/card#me) sharing [file](https://solidweb.me/grouptest1/group-test/document-person-solidcommunity.ttl) with [person on solidcommunity](https://grouptest1.solidcommunity.net/profile/card#me)
 
@@ -227,16 +225,16 @@ Issue: https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1441 
 
 We tested capabilities of authorization with Solid groups with NSS, CSS and ESS Solid servers. We gave up on ESS soon, because we didn't figure out how group permissions worked on ESS.
 
-We found out multiple things about groups and authentication:
+We found out multiple things about groups and authentication with NSS and CSS
 
-- in general, authentication with CSS account to NSS is buggy (on server side of NSS). The other way works, if correct `solid:oidcIssuer` is present in the NSS account's profile document.
-- giving document access to members of public groups generally works (with exception of the above incompatibility)
-- members of private groups can see their group only if the group is on NSS. We couldn't test CSS reading NSS group, because of the above incompatibility
+- authentication between NSS and CSS generally works
+- giving document access to members of public groups generally works
+- members of private groups can see their group only if the group is on NSS
 - giving document access to members of private groups fails everywhere
 
 We also opened github issues based on these tests:
 
-- https://github.com/nodeSolidServer/node-solid-server/issues/1698
+- https://github.com/nodeSolidServer/node-solid-server/issues/1698 (resolved by https://github.com/nodeSolidServer/jose/pull/19)
 - ~~https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1441~~ (got resolved by adding `solid:oidcIssuer`)
 - https://github.com/CommunitySolidServer/CommunitySolidServer/issues/1442
 - https://github.com/nodeSolidServer/node-solid-server/issues/1699
