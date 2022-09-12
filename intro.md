@@ -6,7 +6,7 @@ Welcome! This is my journey through developing a hospitality exchange app with S
 
 Solid is a relatively young project, at least from the perspective of adoption and usability. It still has a lot to desire.
 
-But its promise is very interesting: For user: own your data. For developer: make app on top of existing social network. No need to attract new users. Network effect is here. Your app can only make it better.
+But its promise is very interesting: For a user: own your data. For a developer: make app on top of existing social network. No need to attract new users. Network effect is here. Your app can only make it better.
 
 ## Is this suited for you?
 
@@ -75,7 +75,7 @@ In a more complex feature:
 As a traveller:
 
 0. Share your travel plans online
-0. Potential hosts will contact you and you don't have to sit back
+0. Maybe someone would like to invite you, they will write to you
 
 As a host:
 

@@ -12,7 +12,7 @@ So perhaps it could be:
 
 0. I offer a place to stay for travellers.
 0. This place is at location 50.1N, 14.9E.
-0. I offer there "Blablabla ... and more text".
+0. You'll find there "Blablabla ... and more text".
 0. I may be able to host at this place at the moment.
 
 A bit simplified, it could go like this: (remember, it's short 3-word (Subject, Predicate, Object) sentences:
@@ -53,7 +53,7 @@ What about the new hospex vocabulary? We leave it as a placeholder for now. Even
 
 ## Save the offer
 
-First, we publish our example offer to our Solid pod. We don't bother making interface to save it from the app, yet. We create a new file called hospex.ttl in folder public (we'll deal with permissions later). And we copy the following data into that file.
+First, we publish our example offer to our Solid pod. We don't bother making interface to save it from the app, yet. We create a new file called `hospex.ttl` in folder `public` (we'll deal with permissions later). And we copy the following data into that file.
 
 ```turtle
 @prefix : <#>.

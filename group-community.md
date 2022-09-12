@@ -38,15 +38,15 @@ We could use a network of hospex contacts (To Be Done) to perform the same searc
 
 ### 2. Make a place to discover each other
 
-Create a place (a group) where people can register. Members can find each other in this group.
+Create a place (a group) where people can register/join. Members can see each other in this group.
 
 Improvement #2.1: Make the group members searchable by location, creating a geo index
 
-Advantages:
+#### Advantages:
 - People who previously didn't know each other can find each other
 - Solid has a way of sharing permissions with groups of people - our data don't have to be public - we only share our offers with members of our community or communities (well, ehm, we'll see about that in a moment...)
 
-Disadvantages:
+#### Disadvantages:
 - Centralized solution, a single point of failure, a single point of control
 - If we don't make _Improvement #2.1_, we have to fetch all members' offers in order to find hosts in the area we travel to
 
@@ -115,7 +115,7 @@ We want to:
 1. Make a public group
     1. See if we can authorize the group members to access a resource
 1. Make the group private - self-referencing (The group can be viewed by members of itself)
-    1. See if we can see other members
+    1. See if we can see other members of a group
     1. See if we can authorize the group members to access a resource
 
 Because ideally, the group members are visible only to each other, and can share their hosting offers only with each other.
