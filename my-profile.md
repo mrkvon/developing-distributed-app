@@ -1,4 +1,4 @@
-# Show my profile
+# Show user's profile
 
 _we look what's at webId * triples, triples, triples * fetch my data with inrupt library * fetch my photo * it's annoying, isn't it?_
 
@@ -85,4 +85,4 @@ In SPARQL, the above picture would be written like:
 write a SPARQL query, with optional stuff...
 ```
 
-[Next: Offer a Home](offer.md)
+[Next: Offer to stay at your home](offer.md)
