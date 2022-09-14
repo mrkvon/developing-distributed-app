@@ -17,9 +17,9 @@ _Well, now, as i'm writing this, i've [submitted](https://lov.linkeddata.es/data
 
 I can offer people a place to stay. But how do they ever find me? At the moment, our data live in different places, and we have no way to find each other. Internet is a vast place...
 
-### 1. Crawl
+### 1. Crawl a friend network
 
-Well, people can look at their friends, and friends of friends, and friends of friends of friends, and so on, and see if somebody offers a place to stay; and where it is.
+Well, people can ask (look at the profile of) their friends, and friends of friends, and friends of friends of friends, and so on, and see if somebody offers a place to stay; and where it is.
 This would only work if the network of friends is dense and well established. But if i'm new to the network, or if somebody is new, they won't find me that way.
 
 We could use a network of hospex contacts (To Be Done) to perform the same search.
@@ -28,45 +28,51 @@ We could use a network of hospex contacts (To Be Done) to perform the same searc
 
 - We host people in our friends network, so we can feel safer with them
 - We don't need any additional search system
+- No centralized infrastructure that could be compromised at a risk of whole communities being lost
 
 #### Disadvantages
 
 - New people can't find others, and others can't find them
-- Networks may be disjoint (i.e. two or more disconnected groups), and therefore not know about each other, essentially making separate communities
-- Offers have to be public. Currently Solid doesn't have any mechanism to give permissions to friends of friends of friends of friends, and nobody else. (We could make a crawler that collects these "foafoafoafs" to a single group, and give permissions to that group.)
+- Offers have to be public. Currently, Solid doesn't have any mechanism to give permissions to friends of friends of friends of friends, and nobody else. (We could make a crawler that for each user collects these "foafoafoafs" to a single group, and give permissions to that group, or request members of that group to give permission to read their data)
 - We don't have any notion of a Community (e.g. cyclists, hitchhikers, ...) - like [different](https://welcometomygarden.org/) [hospex](https://www.bewelcome.org/) [communities](https://www.facebook.com/groups/hostasister/), or different [Trustroots Circles](https://www.trustroots.org/circles)
+    - could be done with "tags" stored in a profile
+- Search by location would require prior fetch and scan of the whole network of foafoafoafs. That would take waaaaaaay too long
+- There is no common space to broadcast messages
+- Networks may be disjoint (i.e. two or more disconnected groups), and therefore not know about each other, essentially making separate communities
+    - Depending on the context, this may be a feature
 
 ### 2. Make a place to discover each other
 
 Create a place (a group) where people can register/join. Members can see each other in this group.
 
-Improvement #2.1: Make the group members searchable by location, creating a geo index
+**Improvement #2.1: Make the group members searchable by location, creating a geo index**
 
 #### Advantages:
 - People who previously didn't know each other can find each other
 - Solid has a way of sharing permissions with groups of people - our data don't have to be public - we only share our offers with members of our community or communities (well, ehm, we'll see about that in a moment...)
+- Belonging to something bigger than oneself, like a community, can be a source of an identity (in human, offline sense)
 
 #### Disadvantages:
-- Centralized solution, a single point of failure, a single point of control
+- Centralized solution for a community, a single point of failure, a single point of control. However:
+    - there can be multiple communities, and everybody can be a member of a few
+    - a group could be replicated, and an index could be distributed over a few nodes, with some redundancy
 - If we don't make _Improvement #2.1_, we have to fetch all members' offers in order to find hosts in the area we travel to
 
 
 ### 3. Make a distributed way to discover each other (Distributed Hash Tables)
 
-I don't know what i'm talking about... just using some trendy words here. Only in most vague and foggy way can i imagine how this would function
+When @mrkvon first wrote this, they mentioned they simply didn't know what they were talking about. They still don't. :smile:
 
-Somehow, everybody would host a part of the group/network/index on their own Solid Pod, and somehow, magically, people could find each other that way
+@mariha explained more:
 
-#### Advantages
-- distributed system, no central point of failure
+> I don't think it would work actually.  
+> It is possible to have an index distributed over a few nodes, that could be queried by location.  
+> It is also possible to have a key-value store distributed over a few nodes, implemented as a distributed hash table, it would be queried by keys, not sure what they might be.  
+> I suggest removing this point alltogether.
 
-#### Disadvantages
-- complicated, hard to understand
-- no clear way to manage permissions (do data have to be public again?)
+### 1 + 2 + 3 + ?
 
----
-
-These are all valid options. For starters we went for the middle option - making a centralized group to discover each other
+These may all be valid options. They can coexist next to each other. For starters we decided to make a centralized group, to discover each other
 
 
 ## How to make a group
