@@ -190,18 +190,106 @@ To display such image we
     <img src={photo} />
     ```
 
-## Better?
+## Better way?
 
-Using the inrupt library is a bit annoying, isn't it? In my ideal world, I'd like to express what i need as graph
+*journey to the world of graphs and queries*
+
+Using the inrupt library is a bit annoying, isn't it? In my ideal world, I'd like to express what i need as a graph
 
 <img src="assets/graph_query.png" alt="graph query visualized" width="500" />
 
-This is possible with SPARQL. But Solid and SPARQL are not exactly friends. We'll get to that. If you're impatient, jump [here (TODO)]().
+I specify my webId, i place this picture over my rdf graph, and i discover whatever hides behind the question marks...
+
+This is possible with [SPARQL](https://www.w3.org/TR/sparql11-query/), [Gremlin](https://tinkerpop.apache.org/gremlin.html), [GraphQL-LD](https://github.com/rubensworks/graphql-ld.js) (or is it just for [trees](https://en.wikipedia.org/wiki/Tree_(graph_theory))?)...
+
+Well, computers would have hard time processing image like ours. The query languages below are just another ways of expressing the same thing (and maybe they can express a bit more...)
+
+Solid isn't really friends with query engines. We'll get to that. If you're impatient, jump to a [rant about data discovery in Solid](offer.md#discovery-unresolved). Neverthless, with [proper tooling](https://comunica.dev/) we could at least query separate documents...
+
+### SPARQL
 
 In SPARQL, the above picture would be written like:
 
+```sparql
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX : <https://myusername.solidcommunity.net/profile/card#>
+
+SELECT ?name ?photo ?about ?friend ?interest
+
+WHERE {
+  :me a foaf:Person.
+  OPTIONAL { :me foaf:name ?name. }
+  OPTIONAL { :me vcard:hasPhoto ?photo. }
+  OPTIONAL { :me vcard:note ?about. }
+  OPTIONAL { :me foaf:knows ?friend. }
+  OPTIONAL { :me foaf:topic_interest ?interest. }
+}
 ```
-write a SPARQL query, with optional stuff...
+
+We can query our profile document with [Comunica](https://www.npmjs.com/package/@comunica/query-sparql)[^comunica-sparql], or [rdflib](https://www.npmjs.com/package/rdflib)[^rdflib]
+
+[^comunica-sparql]: You can try this query [live](https://query.linkeddatafragments.org/#datasources=https%3A%2F%2Fmyusername.solidcommunity.net%2Fprofile%2Fcard&query=PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0APREFIX%20vcard%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Fvcard%2Fns%23%3E%0APREFIX%20%3A%20%3Chttps%3A%2F%2Fmyusername.solidcommunity.net%2Fprofile%2Fcard%23%3E%0A%0ASELECT%20%3Fname%20%3Fphoto%20%3Fabout%20%3Ffriend%20%3Finterest%0A%0AWHERE%20%7B%0A%20%20%3Ame%20a%20foaf%3APerson.%0A%20%20OPTIONAL%20%7B%20%3Ame%20foaf%3Aname%20%3Fname.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Ame%20vcard%3AhasPhoto%20%3Fphoto.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Ame%20vcard%3Anote%20%3Fabout.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Ame%20foaf%3Aknows%20%3Ffriend.%20%7D%0A%20%20OPTIONAL%20%7B%20%3Ame%20foaf%3Atopic_interest%20%3Finterest.%20%7D%0A%7D)
+
+[^rdflib]: In my experience, [rdflib](https://www.npmjs.com/package/rdflib) is annoyingly badly [documented](http://linkeddata.github.io/rdflib.js/doc/), unintuitive, and hard to use (sorry authors :heart:). I've never managed to make SPARQL queries work, and everything else was just pain... Let me know if you find out that it's otherwise!
+
+A slight issue here is that SPARQL returns all possible combinations of `?name ?photo ?about ?friend ?interest`. So if you have 7 friends and 24 interests, the query will return 168 results. You could fetch friends and interests separately, to make sense of the results. Or figure out some [smarter way](https://github.com/rubensworks/sparqljson-to-tree.js)...
+
+### Gremlin
+
+[Gremlin](https://en.wikipedia.org/wiki/Gremlin_(query_language)) is another graph traversal query language. I haven't found a pure implementation for RDF, but there is [clownface](https://www.npmjs.com/package/clownface) that may work similarly. I haven't tried it myself, but i'm tempted.
+
+### GraphQL-LD
+
+This seems to nicely support trees. So if you want the data to result in nice object, you can say
+
+```graphql
+{
+  name @single @optional
+  friends @optional
+  about @single @optional
+  interests @optional
+  photo @single @optional
+}
 ```
+
+```json
+{
+  "@context": {
+    "name": "http://xmlns.com/foaf/0.1/name",
+    "friends": "http://xmlns.com/foaf/0.1/knows",
+    "interests": "http://xmlns.com/foaf/0.1/topic_interest",
+    "about": "http://www.w3.org/2006/vcard/ns#note",
+    "photo": "http://www.w3.org/2006/vcard/ns#hasPhoto"
+  }
+}
+```
+
+And you'll get a result
+
+```json
+{
+    "photo": "https://myusername.solidcommunity.net/profile/photo.jpg",
+    "interests": [
+        "http://www.wikidata.org/entity/Q23397",
+        "http://www.wikidata.org/entity/Q4928721",
+        "http://www.wikidata.org/entity/Q195",
+        "http://www.wikidata.org/entity/Q10884"
+    ],
+    "about": "This is an example profile for https://github.com/mrkvon/developing-distributed-app",
+    "friends": [
+        "https://id.amanda.example.com",
+        "https://interoptest.solidcommunity.net/profile/card#me",
+        "https://solidweb.me/marie/profile/card#me"
+    ],
+    "name": "My Test Name"
+}
+```
+but i haven't figured out how to specify or fetch the webId from which we started...
+
+
+and you can do this with [Comunica](https://github.com/rubensworks/graphql-ld-comunica.js)[^comunica-graphql-ld], too...
+
+[^comunica-graphql-ld]: Try our grqphql-ld query [live](https://query.linkeddatafragments.org/#datasources=https%3A%2F%2Fmyusername.solidcommunity.net%2Fprofile%2Fcard&query=%7B%0A%20%20name%20%40single%20%40optional%0A%20%20friends%20%40optional%0A%20%20about%20%40single%20%40optional%0A%20%20interests%20%40optional%0A%20%20photo%20%40single%20%40optional%0A%7D&queryContext=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22friends%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%2C%0A%20%20%20%20%22interests%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Ftopic_interest%22%2C%0A%20%20%20%20%22about%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2006%2Fvcard%2Fns%23note%22%2C%0A%20%20%20%20%22photo%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2006%2Fvcard%2Fns%23hasPhoto%22%0A%20%20%7D%0A%7D&resultsToTree=true&queryFormat=graphql)
 
 [Next: Offer a Home](offer.md)

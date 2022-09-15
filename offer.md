@@ -88,11 +88,13 @@ The current situation shows that Specification writing is largely disconnected f
 
 So... anyways... let's end the rant here, leave it unresolved, and move on.
 
+### Cover our eyes and skip discoverability :see_no_evil: :hear_no_evil: :speak_no_evil:
+
 In our app, for the time being, we'll assume that the hospex data are stored in `/public/hospex.ttl`.
 
 This happens to be a challenge on its own.
 
-If one webId is https://myusername.solidcommunity.net/profile/card#me, other is https://solidweb.org/myusername/profile/card#me and another is https://myusername.net/data#i, how do we construct the `/public/hospex.ttl` url? We take yet another shortcut (look into the code and describe).
+If one webId is https://myusername.solidcommunity.net/profile/card#me, other is https://solidweb.org/myusername/profile/card#me and another is https://webid.myusername.net, how do we construct the `/public/hospex.ttl` url? We take yet another shortcut (look into the code and describe).
 
 ### Fetch and display
 
