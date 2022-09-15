@@ -41,7 +41,9 @@ RDF is a graph like this. Now, if we put this graph together with graphs of Aman
 
 <img alt="RDF graph of Matylda connected with graphs of her friends" src="assets/rdf-graph-extended.png" width="600" />
 
-Secondly, in RDF, instead of words, we use URIs (similar to URLs). Weird, right? For example `likes`  in `(somebody) likes (something)` can be expressed as [`http://xmlns.com/foaf/0.1/topic_interest`](http://xmlns.com/foaf/0.1/topic_interest), or `foaf:topic_interest` for short. When we use the same URI, we know that we say the same thing. Some URIs can represent you or [the Universe](http://www.wikidata.org/entity/Q1). Many of these URIs are defined in RDF Vocabularies, and the [foaf (friend of a friend)](http://xmlns.com/foaf/0.1/) that we used just a moment ago, is a vocabulary example. You can search some of these vocabularies in [LOV](https://lov.linkeddata.es/). When you try to say something, try to use existing words (terms) to say it, if possible.
+Secondly, in RDF, instead of words, we use URIs (similar to URLs). Weird, right? For example `likes`  in `(somebody) likes (something)` can be expressed as [`http://xmlns.com/foaf/0.1/topic_interest`](http://xmlns.com/foaf/0.1/topic_interest), or `foaf:topic_interest` for short. When we use the same URI, we know that we say the same thing. Some URIs can represent you or [the Universe](http://www.wikidata.org/entity/Q1).
+
+Many of these URIs are defined in RDF Vocabularies just like the [foaf (friend of a friend)](http://xmlns.com/foaf/0.1/) we used a moment ago. You can search some of these vocabularies in [LOV](https://lov.linkeddata.es/). When you try to say something, try to use existing words (terms) to say it, if possible!
 
 And that's RDF! Just express the world in simple sentences made of three words. Draw a simple little mind map with URIs.
 

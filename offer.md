@@ -18,19 +18,25 @@ So perhaps it could be:
 A bit simplified, it could go like this: (remember, it's short 3-word (Subject, Predicate, Object) sentences:
 
 0. Me offers Offer.
-0. Offer hasLocation Location.
-    0.0. Location hasLatitude: 50.1.
-    0.0. Location hasLongitude: 14.9.
-0. Offer hasDescription "Blablabla ... and more text" (English).
-0. Offer hasAvailability MaybeCanHost.
+1. Offer hasLocation Location.
+    - Location hasLatitude: 50.1.
+    - Location hasLongitude: 14.9.
+2. Offer hasDescription "Blablabla ... and more text" (English).
+3. Offer hasAvailability MaybeCanHost.
 
 We just made this up. It could work differently. We could also add more structured stuff (which we will, for sure). For example, what do you offer? Room? Garden? ...
 
 At this point you go hunting on the internet. Try to find out whether somebody talked about hospex in terms of Linked Data and RDF before. Or at least did they talk about descriptions, locations, or something?
 
-Fortunately, there is a convenient website, which collects various RDF Vocabularies and Ontologies (sorry, more scary words. But these are just translations from normal language to URLs). So you look up terms like [Accommodation], [Offer], [Hospitality], [Hospex], [Location], [Description], [About], ...
+Fortunately, there is a [convenient website](https://lov.linkeddata.es), which collects various RDF Vocabularies and Ontologies (sorry, more scary words. But these are just translations from normal language to URLs). So you look up terms like [Accommodation](https://lov.linkeddata.es/dataset/lov/terms?q=accommodation), [Offer](https://lov.linkeddata.es/dataset/lov/terms?q=offer), [Hospitality](https://lov.linkeddata.es/dataset/lov/terms?q=hospitality), Hospex, [Location](https://lov.linkeddata.es), [Description](https://lov.linkeddata.es/dataset/lov/terms?q=description), [About](https://lov.linkeddata.es/dataset/lov/terms?q=about), ...
 
-Not much luck there with Hospitality-related topics. But we find a vocabulary [WGS84](), which describes earth coordinates. And we find a few possible terms for the _"has\_description"_. We'll need to make up the rest and create our own new vocabulary which we'll call _hospex_.
+Not much luck there with Hospitality-related topics[^hospex-update]. But we find a vocabulary [WGS84](http://www.w3.org/2003/01/geo/wgs84_pos), which describes earth coordinates. And we find a few [possible](http://purl.org/dc/terms/description) [terms](http://www.w3.org/2000/01/rdf-schema#comment) for the predicate `has description`. We'll need to make up the rest and create our own new vocabulary which we'll call _hospex_.
+
+[^hospex-update]:
+    On the second look, we've also found terms that we should include in our hospex vocabulary, if possible:
+    - [Accommodation](https://schema.org/Accommodation)
+    - somebody [offers](http://purl.org/goodrelations/v1#offers) something
+    - [Offer](https://schema.org/Offer)
 
 Here comes a simple rule of thumb: If a _vocabulary_ or a _word_ exists already, try reusing it. Ideally, we want one common language, so it's better to call one thing one (common) name.
 
@@ -46,7 +52,7 @@ Offer rdfs:comment "Blablabla ... and more text"@en.
 Offer hospex:available hospex:Maybe. (Figure out!)
 ```
 
-Me, Offer, and Location will be URLs, or URIs that represent ... ;D ... me, the offer and its location...
+Me, Offer, and Location will be URLs, or URIs that represent ... :wink: ... me, the offer and its location...
 
 What about the new hospex vocabulary? We leave it as a placeholder for now. Eventually, we'll write and [publish it](http://w3id.org/hospex/ns) to [w3id.org](https://w3id.org/) via [github](https://github.com/perma-id/w3id.org/pull/2397).
 
@@ -80,7 +86,7 @@ a wgs84:Point; wgs84:lat 50.1; wgs84:long 14.9 .
 
 The challenge at the start: How does the app find where my offer data are stored?
 
-And the answer is: Badly. Crappily. Without teeth. Solid Pod is a database, but you can't query it. It doesn't have a [LDF]() endpoint, and it doesn't have a [SPARQL]() endpoint. It's just folders with files with RDF, and you're supposed to find the data you're interested in somehow. The only thing that Solid offers is type index, where it should vaguely say in which file you can find things of type hospex:Accommodation. But this type index must go hopelessly out of sync.
+And the answer is: Badly. Crappily. Without teeth. Solid Pod is a database, but you can't query it. It doesn't have a [LDF](https://linkeddatafragments.org/) endpoint, and it doesn't have a [SPARQL](https://www.w3.org/TR/sparql11-query/) endpoint. It's just folders with files with RDF, and you're supposed to find the data you're interested in somehow. The only thing that Solid offers is type index, where it should vaguely say in which file you can find things of type hospex:Accommodation. But this type index must go hopelessly out of sync.
 
 I don't like this. [I think Solid Pods should have LDF endpoints](https://mrkvon.org/blog/solid-i-want/). It would fix the discoverability issue, which is one of the reasons why interoperability between apps is difficult. (another reason is using different words for the same thing)
 
