@@ -97,4 +97,4 @@ As a host:
 
 And that's the app we want to make!
 
-[Next: App design](app-design.md)
+:arrow_right: [Next: App design](app-design.md)

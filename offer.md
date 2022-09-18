@@ -124,4 +124,4 @@ There is always a link to the implementation, and then the request that gets sen
 Great. But how can others find my offer?
 
 
-[Next: A group. A community](group-community.md)
+:arrow_right: **[Next: A group. A community](group-community.md)**

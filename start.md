@@ -24,4 +24,4 @@ The central place of the app is a map which shows Offers from hosts.
 
 Still no Solid going on, right?
 
-[Next: Start with Solid](solid-start.md)
+:arrow_right: **[Next: Start with Solid](solid-start.md)**

@@ -18,4 +18,4 @@ _there will be simple images here_
 
 ... or even a simple public (figma) design ...
 
-[Next: Start implementing (No Solid yet)](start.md)
+:arrow_right: **[Next: Start implementing (No Solid yet)](start.md)**

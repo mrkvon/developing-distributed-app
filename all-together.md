@@ -118,4 +118,4 @@ Just show the picture and description from personal profile document of the pers
 
 And that's all folks! At least for now. Let's see what's awaiting us...
 
-[Next: Next steps](next-steps.md)
+:arrow_right: **[Next: Next steps](next-steps.md)**

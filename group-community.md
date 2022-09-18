@@ -266,4 +266,4 @@ Unfortunately the issue that an offer has to be public, or the group has to be p
 
 Next, we'll put all these components together, and allow people to join groups and show offers on the map.
 
-[Next: Putting it all together](all-together.md)
+:arrow_right: **[Next: Putting it all together](all-together.md)**

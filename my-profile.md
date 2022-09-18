@@ -294,4 +294,4 @@ and you can do this with [Comunica](https://github.com/rubensworks/graphql-ld-co
 
 [^comunica-graphql-ld]: Try our grqphql-ld query [live](https://query.linkeddatafragments.org/#datasources=https%3A%2F%2Fmyusername.solidcommunity.net%2Fprofile%2Fcard&query=%7B%0A%20%20name%20%40single%20%40optional%0A%20%20friends%20%40optional%0A%20%20about%20%40single%20%40optional%0A%20%20interests%20%40optional%0A%20%20photo%20%40single%20%40optional%0A%7D&queryContext=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22friends%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%2C%0A%20%20%20%20%22interests%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Ftopic_interest%22%2C%0A%20%20%20%20%22about%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2006%2Fvcard%2Fns%23note%22%2C%0A%20%20%20%20%22photo%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2006%2Fvcard%2Fns%23hasPhoto%22%0A%20%20%7D%0A%7D&resultsToTree=true&queryFormat=graphql)
 
-[Next: Offer a Home](offer.md)
+:arrow_right: **[Next: Offer a Home](offer.md)**

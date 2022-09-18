@@ -25,3 +25,8 @@ We do this together with the folks of [Open Hospitality Network](https://openhos
 9. [Putting it all together](all-together.md) \
    in which we describe *a story of a user*
 10. [Next steps](next-steps.md)
+
+---
+
+- [Technical reference](reference.md) \
+  what's going on behind the scenes

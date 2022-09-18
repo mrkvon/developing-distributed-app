@@ -15,3 +15,9 @@
 - customize the app to the needs of different communities
 - display members of other friendly communities on the map
 
+_And that's all folks!_
+
+_We'll update this text as we progress._
+
+:sleeping: :bike: :arrow_right: [sleepy.bike](https://sleepy.bike) :arrow_left: :biking_woman: :biking_man: :bicyclist: :house_with_garden: :couch_and_lamp: :sleeping_bed:
+

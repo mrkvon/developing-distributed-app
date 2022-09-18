@@ -55,4 +55,4 @@ Great!
 
 We've also wired it with redux. We want to do this using RTK-Query. That's a TODO. :)
 
-[Next: Show your data in the app](my-profile.md)
+:arrow_right: **[Next: Show your data in the app](my-profile.md)**
