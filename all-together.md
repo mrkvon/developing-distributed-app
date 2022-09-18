@@ -78,9 +78,9 @@ You fill the form (description and location), and the following info gets added 
 <Offer> <is offered by> <I>.
 ```
 
-in picture (TODO):
+in picture:
 
-![TODO]()
+<img width="600" src="assets/offer-structure.png" />
 
 ```ttl
 @prefix : <#>.
