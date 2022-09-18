@@ -11,15 +11,18 @@ If you don't have one already, you can choose from a few readily available optio
 - https://solidweb.org
 - https://inrupt.net
 
-[Community Solid Server]():
+[Community Solid Server](https://github.com/CommunitySolidServer/CommunitySolidServer):
 - https://solidweb.me
 
-[Inrupt Enterprise Server]():
+[Inrupt Enterprise Server](https://inrupt.com/products/enterprise-solid-server/):
 - https://start.inrupt.com/profile
+
+Coming soon:
+[TrinPod](https://graphmetrix.com/trinpod)
 
 ## Sign in for the first time
 
-With this profile, let's say it's https://mynewprofile.solidcommunity.net/profile/card#me, you sign in to https://sleepy.bike for the first time.
+With this profile, let's say it's https://myusername.solidcommunity.net/profile/card#me, you sign in to https://sleepy.bike for the first time.
 
 The app will check whether you have a file `/public/hospex.ttl` in your pod. If you don't have that file, it will create it and start introducing you to the app.
 

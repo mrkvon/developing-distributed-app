@@ -1,5 +1,7 @@
 # The Next Steps
 
+_looking into the future * what is not done * the end, for now_
+
 - edit profile
   - add a description, contact information, interests, ...
 - send messages to other members

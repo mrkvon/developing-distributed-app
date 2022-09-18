@@ -1,12 +1,10 @@
 # Show my profile
 
-_we look what's at webId * triples, triples, triples * fetch my data with inrupt library * fetch my photo * it's annoying, isn't it?_
-
-_how we fetch user's profile data - photo, name, about_
+_we look what's at webId * triples, triples, triples * fetch my data with inrupt library * fetch my photo * it's annoying, isn't it? * how to ask a graph for data_
 
 ## Intro: Look at webId
 
-When we initialized login, we received the signed-in user's (yours) webId. It's a url which in Linked Data world represents you. It looks something like `https://myusername.solidcommunity.net/profile/card#me`. And in Linked Data world, when you go to that url, you should get some info about that person (you) in RDF format.
+When we initialized login, we received the signed-in user's (yours) webId. It's a url which in Linked Data world represents you. It looks something like [`https://myusername.solidcommunity.net/profile/card#me`](https://myusername.solidcommunity.net/profile/card#me). And in Linked Data world, when you go to that url, you should get some info about that person (you) in RDF format.
 
 So we'll do just that. After app gets initialized (with `handleIncomingRedirect`), we take the webId and we look at that url (dereference it, do we call it that?). But we don't do it in simple way. We use another inrupt's library, `@inrupt/solid-client`.
 
@@ -119,11 +117,19 @@ const dataset = await getSolidDataset(webId, { fetch })
 
 ### Extract the data
 
-We can fetch the following, and more:
+We will fetch the following:
 
-- name: [`vcard:fn`]() or [`foaf:name`]()
-- photo: [`vcard:hasPhoto`]()
-- info: [`vcard:note`]()
+- name: [`vcard:fn`](http://www.w3.org/2006/vcard/ns#fn) or [`foaf:name`](http://xmlns.com/foaf/0.1/name)
+- photo: [`vcard:hasPhoto`](http://www.w3.org/2006/vcard/ns#hasPhoto)
+- info: [`vcard:note`](http://www.w3.org/2006/vcard/ns#note)
+
+but we can fetch more:
+
+- friends/contacts: [`foaf:knows`](http://xmlns.com/foaf/0.1/knows)
+- interests: [`foaf:topic_interest`](http://xmlns.com/foaf/0.1/topic_interest)
+
+and more...
+
 
 To manage vocabularies, we use a handy library `rdf-namespaces`. Thanks to this library we don't have to type the terms.
 

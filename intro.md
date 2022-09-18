@@ -1,5 +1,7 @@
 # Developing a distributed app with Solid
 
+_here we introduce Solid, our agenda, and Open Hospitality Network * we also see how hospitality exchange functions_
+
 Welcome! This is my journey through developing a hospitality exchange app with Solid. I talk about technical stuff of developing. Also, as much as possible, i try to include my frustrations, annoyances, insecurities, motivations, and also reasons why i do one thing and not the other.
 
 ## Intro
@@ -97,4 +99,4 @@ As a host:
 
 And that's the app we want to make!
 
-:arrow_right: [Next: App design](app-design.md)
+:arrow_right: **[Next: App design](app-design.md)**

@@ -1,5 +1,7 @@
 # Project setup
 
+_we do a bit of boring setup * and map * no Solid going on_
+
 So you want to make a social app with Solid, right?
 
 So how do you start?

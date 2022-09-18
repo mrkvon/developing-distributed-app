@@ -22,7 +22,7 @@ https://github.com/OpenHospitalityNetwork/ohn-solid/blob/4db3bb320e2ad7500424217
 
 #### add self to group
 
-`PATCH https://myusername.solidcommunity.net/public/hospex.ttl`
+`PATCH https://mrkvon.inrupt.net/hospex/sleepy-bike/members`
 
 ```sparql
 INSERT DATA {
