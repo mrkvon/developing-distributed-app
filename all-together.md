@@ -25,7 +25,7 @@ The app will check whether you have a file `/public/hospex.ttl` in your pod. If 
 
 ## Fill your profile
 
-This is not implemented, yet. You can fill your profile directly in your Solid Pod - name, description. They'll show up in the app.
+This is not implemented, yet. You can fill your profile directly in your Solid Pod - name, description, photo. They'll show up in the app.
 
 ## Join a community
 

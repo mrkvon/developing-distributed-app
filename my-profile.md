@@ -204,9 +204,9 @@ I specify my webId, i place this picture over my rdf graph, and i discover whate
 
 This is possible with [SPARQL](https://www.w3.org/TR/sparql11-query/), [Gremlin](https://tinkerpop.apache.org/gremlin.html), [GraphQL-LD](https://github.com/rubensworks/graphql-ld.js) (or is it just for [trees](https://en.wikipedia.org/wiki/Tree_(graph_theory))?)...
 
-Well, computers would have hard time processing image like ours. The query languages below are just another ways of expressing the same thing (and maybe they can express a bit more...)
+Well, computers would have hard time processing image like ours. But the query languages below can translate such graph questions into text questions.
 
-Solid isn't really friends with query engines. We'll get to that. If you're impatient, jump to a [rant about data discovery in Solid](offer.md#discovery-unresolved). Neverthless, with [proper tooling](https://comunica.dev/) we could at least query separate documents...
+Solid isn't really friends with query engines. We'll get to that. If you're impatient, jump to a [rant about data discovery in Solid](offer.md#discovery-unresolved). Neverthless, with [proper tooling](https://comunica.dev/) we could at least query each document separately...
 
 ### SPARQL
 

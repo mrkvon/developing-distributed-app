@@ -107,6 +107,21 @@ If one webId is https://myusername.solidcommunity.net/profile/card#me, other is 
 And we fetch the data there, like we did with the profile. And we show them in UX
 
 
+### Create, Update and Remove Offer Programmatically
+
+We haven't looked how to edit the offer. Well, we just use @inrupt/solid-client again.
+
+It's a very important piece, but a bit boring to describe it here, so if you're interested how it's done, read in our [technical reference](./reference.md).
+
+There is always a link to the implementation, and then the request that gets sent (you don't have to do that manually!):
+
+- [create offer](./reference.md#create-offer)
+- [update offer](./reference.md#update-offer)
+- [remove offer](./reference.md#remove-offer)
+
+---
+
+Great. But how can others find my offer?
 
 
 [Next: A group. A community](group-community.md)
